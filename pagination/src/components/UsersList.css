@@ -1,0 +1,47 @@
+
+.users-list {
+   width: 100%;
+}
+
+.user-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+.paginate {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.paginate .page-num {
+    box-sizing: content-box;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 400;
+    border: 1px solid #FFF842;
+}
+
+.paginate .page-num:hover {
+    background-color: #FFF842;
+    color: black;
+}
+
+.paginate .active {
+    font-size: 16px;
+    color: #4DC3FA;
+}

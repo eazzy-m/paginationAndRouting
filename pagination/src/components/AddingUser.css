@@ -1,0 +1,185 @@
+.adding-user {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: start;
+
+}
+
+.adding-user-form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+}
+
+.input {
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: #4DC3FA;
+    font-weight: 600;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    border-radius: 10px;
+    outline: none;
+}
+
+.input:focus {
+    background-color: #FFF842;
+}
+
+.input::placeholder {
+    color: black;
+    font-weight: 600;
+}
+
+.radio-container {
+    display: flex;
+    margin: 20px 0 25px 120px;
+    width: 180px;
+    justify-content: space-between;
+}
+
+input {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+
+
+input[type="number"] {
+    position: relative;
+    height: 40px;
+    width: 100px;
+    padding-left: 15px;
+    margin-left: -13px;
+}
+.quantity {
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    opacity: 0;
+    z-index: 10;
+}
+
+.quantity-wrapper {
+    position: relative;
+}
+
+.quantity-wrapper:after {
+    content: "\21E7";
+    position: relative;
+    right: 27px;
+    height: 40px;
+    top: -7px;
+    color: #1F2739;
+}
+
+.quantity-wrapper:before {
+    content: "\21E9";
+    position: relative;
+    left: 73px;
+    height: 40px;
+    top: 7px;
+    color: #1F2739;
+    z-index: 2;
+}
+
+#male, #female {
+    accent-color: #FFF842;
+}
+
+label {
+    cursor: pointer;
+}
+
+.submit-button {
+    align-self: center;
+    width: 160px;
+    cursor: pointer;
+    margin-bottom: 100px;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: #4DC3FA;
+    border-radius: 10px;
+}
+
+.submit-button:hover {
+    transform: scale(1.05);
+    transition: transform .2s ease-in-out;
+}
+
+.submit-button:active {
+    transform: scale(.95);
+    background-color: #FFF842;
+}
+
+
+.box {
+    position: relative;
+    margin-top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.box select {
+    border-radius: 10px;
+    background-color:  #4DC3FA;
+    font-weight: 600;
+    font-family: "Baskerville Old Face", sans-serif;
+    letter-spacing: .2em;
+    padding: 10px 12px;
+    width: 250px;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.box::before {
+    content: "\21D3";
+    position: absolute;
+    padding-left: 3px;
+    top: 0;
+    right: 150px;
+    width: 39px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 39px;
+    color: #1F2739;
+    background-color: rgba(105, 105, 105, 0.4);
+    pointer-events: none;
+}
+
+.box:hover::before {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+    padding: 30px;
+}
+
