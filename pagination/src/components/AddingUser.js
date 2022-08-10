@@ -48,20 +48,20 @@ function AddingUser({postNewUser}) {
                     <input name="user_name" onChange={handleInput} required type="text" className="input" placeholder="User Name"/>
                     <input onChange={handleInput} required name="email" type="email" className="input" placeholder="Email"/>
                     <input onChange={handleInput} required name="password" type="password" className="input" placeholder="Password"/>
+                    <div className="input-wrapper">
+                        <div className="quantity-wrapper">
+                            <input name="age" onChange={handleInput} required  min="16" max="99" type="number" className="input quantity" placeholder="Age"/>
+                        </div>
 
-                    <div className="quantity-wrapper">
-                        <input name="age" onChange={handleInput} required  min="16" max="99" type="number" className="input quantity" placeholder="Age"/>
+                        <div className="box">
+                            <select onChange={handleInput} required form="form" name="role" id="pet-select">
+                                <option value="">Your role</option>
+                                <option value="admin">Admin</option>
+                                <option value="observer">Observer</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
                     </div>
-
-                    <div className="box">
-                        <select onChange={handleInput} required form="form" name="role" id="pet-select">
-                            <option value="">Your role</option>
-                            <option value="admin">Admin</option>
-                            <option value="observer">Observer</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-
                     <div className='radio-container'>
                         <input onChange={handleInput} required type="radio" id="male" name="gender" value="male"/>
                             <label htmlFor="male">Male</label><br/>

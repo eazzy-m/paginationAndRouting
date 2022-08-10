@@ -30,6 +30,7 @@
     letter-spacing: .2em;
     border-radius: 10px;
     outline: none;
+    border: none;
 }
 
 .input:focus {
@@ -83,9 +84,9 @@ input[type="number"]::-webkit-inner-spin-button {
 .quantity-wrapper:after {
     content: "\21E7";
     position: relative;
-    right: 27px;
+    right: -73px;
     height: 40px;
-    top: -7px;
+    top: -38px;
     color: #1F2739;
 }
 
@@ -135,7 +136,7 @@ label {
 
 .box {
     position: relative;
-    margin-top: 40px;
+    margin-top: 41px;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -148,6 +149,7 @@ label {
     font-family: "Baskerville Old Face", sans-serif;
     letter-spacing: .2em;
     padding: 10px 12px;
+    margin-right: 50px;
     width: 250px;
     border: none;
     font-size: 16px;
@@ -157,19 +159,20 @@ label {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
+    height: 40px;
 }
 
 .box::before {
     content: "\21D3";
     position: absolute;
-    padding-left: 3px;
+    padding-left: 4px;
     top: 0;
-    right: 150px;
+    right: 50px;
     width: 39px;
     border-radius: 10px;
     text-align: center;
     font-size: 28px;
-    line-height: 39px;
+    line-height: 40px;
     color: #1F2739;
     background-color: rgba(105, 105, 105, 0.4);
     pointer-events: none;
@@ -183,3 +186,6 @@ label {
     padding: 30px;
 }
 
+.input-wrapper {
+    display: flex;
+}
