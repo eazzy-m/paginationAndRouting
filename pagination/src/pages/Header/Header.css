@@ -4,17 +4,13 @@
     display: flex;
     align-items: center;
     background-color: #FFF842;
-}
-
-.nav {
-
+    justify-content: space-between;
 }
 
 .nav-list {
     margin-left: 40px;
     display: flex;
     justify-content: space-between;
-    width: 220px;
     list-style: none;
 }
 
@@ -26,8 +22,12 @@
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
+
 }
 
+.auth {
+    margin-right: 30px;
+}
 
 
 .nav-item:hover {
@@ -35,16 +35,11 @@
     border-radius: 5px;
     background-color: #a7a122;
     transition: box-shadow .1s ease-in-out;
-
 }
 
 .nav-item:active {
     color: #0E1119;
     box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
-}
-
-.nav-item:first-of-type {
-
 }
 
 .nav-item-active {

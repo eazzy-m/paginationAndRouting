@@ -1,0 +1,27 @@
+.adding-user {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: start;
+
+}
+
+.adding-user-form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+}
+
+
+.radio-container {
+    display: flex;
+    margin: 20px 0 25px 120px;
+    width: 180px;
+    justify-content: space-between;
+}

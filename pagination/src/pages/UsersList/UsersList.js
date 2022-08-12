@@ -1,27 +1,30 @@
 import React, {useEffect, useState} from 'react';
+import { useSelector } from "react-redux";
+
 import ReactPaginate from "react-paginate";
 import "./UsersList.css";
 
 
-function UsersList(props) {
+const UsersList = () => {
 
-    const { data } = props;
+    const { users } = useSelector((state) => state.users);
+
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
-    const itemsPerPage = 8;
     const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 8;
 
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
-        setCurrentItems(data.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(data.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage, data]);
+        setCurrentItems(users.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(users.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, users]);
 
-
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % data.length;
+    const handlePageClick = event => {
+        const newOffset = (event.selected * itemsPerPage) % users.length;
         setItemOffset(newOffset);
     };
+
 
     return (
         <>
