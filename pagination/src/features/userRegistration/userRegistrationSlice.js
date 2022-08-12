@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
-import {newUserRegistration} from "../../Api/api";
+import {newUserRegistration} from "../../api/api";
 
 const initialState = {
     isRegister: false
@@ -15,8 +15,9 @@ const userRegistrationSlice = createSlice({
         [registerNewUser.pending]: (state) => {
             state.isRegister = false;
         },
-        [registerNewUser.fulfilled]: (state) => {
-            state.isRegister = true;
+        [registerNewUser.fulfilled]: (state, action) => {
+            state.isRegister = action.payload;
+            console.log(state.isRegister)
         },
         [registerNewUser.rejected]: (state) => {
             state.isRegister = false;

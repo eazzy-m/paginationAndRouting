@@ -10,11 +10,11 @@ const Login = ({login}) => {
         password: '',
     };
 
-    const uselessData = {
-        first_name: '',
-        last_name: '',
-        user_name: '',
-    };
+    // const uselessData = {
+    //     first_name: '',
+    //     last_name: '',
+    //     user_name: '',
+    // };
 
     const [data, setData] = useState(initialData);
 

@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Input from "../../components/input/Input";
-import "./Registration.css";
-import Select from "../../components/select/Select";
+//import Select from "../../components/select/Select";
 import SubmitButton from "../../components/submit-button/SubmitButton";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Registration = ({postNewUser, ok}) => {
+import "./Registration.css";
+const Registration = ({postNewUser}) => {
     const { isRegister } = useSelector((state) => state.registration);
+
     const navigate = useNavigate();
 
     const initialData = {
@@ -17,19 +18,19 @@ const Registration = ({postNewUser, ok}) => {
         email: '',
         password: '',
     };
-     const uselessData = {age: 0,
-        latitude: -12.609311,
-        longitude: -40.687713,
-        role: '',
-        address: "228 улица Пушкина дом Колотушкина, 0101",
-        image: "http://placehold.it/32x32",
-        phone: "+1 (844) 414-3567",}
+
+     // const uselessData = {age: 0,
+     //    latitude: -12.609311,
+     //    longitude: -40.687713,
+     //    role: '',
+     //    address: "228 улица Пушкина дом Колотушкина, 0101",
+     //    image: "http://placehold.it/32x32",
+     //    phone: "+1 (844) 414-3567",}
 
 
     const [data, setData] = useState(initialData);
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-
 
     const submit = e => {
         e.preventDefault();
@@ -37,10 +38,6 @@ const Registration = ({postNewUser, ok}) => {
             setData(initialData);
             postNewUser(data);
             setMessage('');
-            console.log(isRegister)
-            if (isRegister) {
-                navigate("/")
-            }
         } else {
             setMessage('Passwords are not the same');
         }
@@ -58,6 +55,10 @@ const Registration = ({postNewUser, ok}) => {
             setData({...data, [name]: value});
         }
     };
+
+    if (isRegister) {
+        navigate("/")
+    }
 
     return (
         <>

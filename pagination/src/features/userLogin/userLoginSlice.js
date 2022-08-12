@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
-import { handlerLogin } from "../../Api/api";
+import { handlerLogin } from "../../api/api";
 
 const initialState = {
     isLogin: false
