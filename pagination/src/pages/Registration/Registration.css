@@ -1,0 +1,45 @@
+.adding-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -100px;
+}
+
+.adding-user-form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+}
+
+.radio-container {
+    display: flex;
+    margin: 20px 0 25px 120px;
+    width: 180px;
+    justify-content: space-between;
+}
+
+
+.link {
+    margin-top: -40px;
+    color: aliceblue;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: .1em;
+}
+
+.link:hover {
+    letter-spacing: .2em;
+    transition: all .3s ease-out;
+}
+
+.link:visited {
+    color: azure;
+}

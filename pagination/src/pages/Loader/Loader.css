@@ -1,0 +1,58 @@
+
+.loading-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-title {
+    color: #4DC3FA;
+    font-weight: 600;
+    letter-spacing: .1em;
+    font-size: 34px;
+}
+
+.gears-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.gear-big {
+    width:  60px;
+    height: 60px;
+    animation: 5s infinite rotation-right;
+}
+
+.gear-small {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    margin-bottom: 6px;
+    animation: 5s infinite rotation-left;
+}
+
+@keyframes rotation-left {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotation-right {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

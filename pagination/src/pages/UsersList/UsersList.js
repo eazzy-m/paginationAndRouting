@@ -1,29 +1,42 @@
 import React, {useEffect, useState} from 'react';
+import { useSelector, useDispatch } from "react-redux";
+
 import ReactPaginate from "react-paginate";
+import { getUsers } from "../../features/usersList/usersListSlice";
 import "./UsersList.css";
+import Loader from "../Loader/Loader";
 
 
-function UsersList(props) {
+const UsersList = () => {
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((state) => state.users);
 
-    const { data } = props;
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(getUsers());
+        }, 0);
+    }, []);
+
+    const { users } = useSelector((state) => state.users);
+
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
-    const itemsPerPage = 8;
     const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 8;
 
     useEffect(() => {
         const endOffset = itemOffset + itemsPerPage;
-        setCurrentItems(data.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(data.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage, data]);
+        setCurrentItems(users.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(users.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, users]);
 
-
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % data.length;
+    const handlePageClick = event => {
+        const newOffset = (event.selected * itemsPerPage) % users.length;
         setItemOffset(newOffset);
     };
 
-    return (
+
+    return (isLoading ? <Loader/> :
         <>
             <h1>Users List</h1>
             <div className="container">

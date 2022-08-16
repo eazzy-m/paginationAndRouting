@@ -1,0 +1,26 @@
+
+.submit-button {
+    align-self: center;
+    width: 160px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    font-family: "Baskerville Old Face", sans-serif;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: #4DC3FA;
+    border-radius: 10px;
+}
+
+.submit-button:hover {
+    transform: scale(1.05);
+    transition: transform .2s ease-in-out;
+}
+
+.submit-button:active {
+    transform: scale(.95);
+    background-color: #FFF842;
+}
