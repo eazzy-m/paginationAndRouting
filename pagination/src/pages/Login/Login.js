@@ -7,7 +7,6 @@ import SubmitButton from "../../components/submit-button/SubmitButton";
 
 
 const Login = ({login}) => {
-    const { isLoading } = useSelector((state) => state.login);
     const { isLogin } = useSelector(state => state.login);
     const initialData = {
         login: '',
