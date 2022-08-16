@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
+import {Link, Navigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+
 import Input from "../../components/input/Input";
 import SubmitButton from "../../components/submit-button/SubmitButton";
 
+
 const Login = ({login}) => {
-
+    const { isLoading } = useSelector((state) => state.login);
+    const { isLogin } = useSelector(state => state.login);
     const initialData = {
-        user_name: '',
-        email: '',
-        password: '',
+        login: '',
+        password: ''
     };
-
-    // const uselessData = {
-    //     first_name: '',
-    //     last_name: '',
-    //     user_name: '',
-    // };
 
     const [data, setData] = useState(initialData);
 
@@ -29,21 +27,22 @@ const Login = ({login}) => {
         setData({...data, [name]: value});
     };
 
+    if (isLogin) {
+        return <Navigate to="/users"/>
+    }
+
     return (
         <>
             <h1>Login</h1>
 
             <div className="adding-user">
                 <form method="POST" id="login-form" className="adding-user-form" onSubmit={submit}>
-
-                    {/*<Input name="first_name" onChange={handleInput} required type="text" className="input" placeholder="First Name"/>*/}
-                    {/*<Input name="last_name" onChange={handleInput} required type="text" className="input" placeholder="Last Name"/>*/}
-                    <Input name="user_name" onChange={handleInput} required type="text" className="input" placeholder="User Name"/>
-                    <Input onChange={handleInput} required name="email" type="email" className="input" placeholder="Email"/>
+                    <Input name="login" onChange={handleInput} required type="text" className="input" placeholder="username or email"/>
                     <Input onChange={handleInput} required name="password" type="password" className="input" placeholder="Password"/>
 
                     <SubmitButton/>
                 </form>
+                <Link className="link" to={'/registration'}>Sign up</Link>
             </div>
         </>
     );

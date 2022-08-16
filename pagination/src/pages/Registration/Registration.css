@@ -1,7 +1,9 @@
 .adding-user {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     margin-top: -100px;
 }
@@ -22,4 +24,22 @@
     margin: 20px 0 25px 120px;
     width: 180px;
     justify-content: space-between;
+}
+
+
+.link {
+    margin-top: -40px;
+    color: aliceblue;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: .1em;
+}
+
+.link:hover {
+    letter-spacing: .2em;
+    transition: all .3s ease-out;
+}
+
+.link:visited {
+    color: azure;
 }

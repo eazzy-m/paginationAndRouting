@@ -7,10 +7,6 @@ const initialState = {
     isLoading: true
 };
 
-//export const getLoginFromServer = createAsyncThunk('usersList/getLoginFromServer', handlerLogin);
-
-//export const registerNewUser = createAsyncThunk('usersList/registerNewUser', newUserRegistration)
-
 export const getUsers = createAsyncThunk('usersList/getUsers ', getUsersFromServer);
 
 const usersListSlice = createSlice({
@@ -30,5 +26,4 @@ const usersListSlice = createSlice({
     }
 });
 
-//export const {loggedIn, loggedOut} = usersListSlice.actions
 export default usersListSlice.reducer;

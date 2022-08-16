@@ -1,11 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import ReactPaginate from "react-paginate";
+import { getUsers } from "../../features/usersList/usersListSlice";
 import "./UsersList.css";
+import Loader from "../Loader/Loader";
 
 
 const UsersList = () => {
+    const dispatch = useDispatch();
+    const { isLoading } = useSelector((state) => state.users);
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(getUsers());
+        }, 0);
+    }, []);
 
     const { users } = useSelector((state) => state.users);
 
@@ -26,7 +36,7 @@ const UsersList = () => {
     };
 
 
-    return (
+    return (isLoading ? <Loader/> :
         <>
             <h1>Users List</h1>
             <div className="container">

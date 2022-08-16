@@ -3,7 +3,8 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import { handlerLogin } from "../../api/api";
 
 const initialState = {
-    isLogin: false
+    isLoading: true,
+    isLogin: ''
 };
 
 export const loginServer = createAsyncThunk('usersList/registerNewUser', handlerLogin);
@@ -11,13 +12,19 @@ export const loginServer = createAsyncThunk('usersList/registerNewUser', handler
 const userLoginSlice = createSlice({
     name: 'login',
     initialState,
+    reducers: {
+        logOut: (state) => {
+            state.isLogin = '';
+        }
+    },
     extraReducers: {
         [loginServer.pending]: (state) => {
+            state.isLogin = false;
             state.isLoading = true;
         },
-        [loginServer.fulfilled]: (state) => {
+        [loginServer.fulfilled]: (state, action) => {
             state.isLoading = false;
-            state.isLogin = true;
+            state.isLogin = action.payload;
         },
         [loginServer.rejected]: (state) => {
             state.isLoading = false;
@@ -25,4 +32,6 @@ const userLoginSlice = createSlice({
     }
 });
 
+
+export const { logOut } = userLoginSlice.actions;
 export default userLoginSlice.reducer;

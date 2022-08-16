@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Input from "../../components/input/Input";
-//import Select from "../../components/select/Select";
-import SubmitButton from "../../components/submit-button/SubmitButton";
-import {  Navigate } from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import { useSelector } from "react-redux";
+
+import Input from "../../components/input/Input";
+import SubmitButton from "../../components/submit-button/SubmitButton";
 
 import "./Registration.css";
 const Registration = ({postNewUser}) => {
@@ -16,14 +16,6 @@ const Registration = ({postNewUser}) => {
         email: '',
         password: '',
     };
-
-     // const uselessData = {age: 0,
-     //    latitude: -12.609311,
-     //    longitude: -40.687713,
-     //    role: '',
-     //    address: "228 улица Пушкина дом Колотушкина, 0101",
-     //    image: "http://placehold.it/32x32",
-     //    phone: "+1 (844) 414-3567",}
 
 
     const [data, setData] = useState(initialData);
@@ -43,7 +35,7 @@ const Registration = ({postNewUser}) => {
 
     const isPasswordCorrect = e => {
         setPassword(e.target.value);
-    }
+    };
 
     const handleInput = e => {
         const { name, value } = e.target;
@@ -55,7 +47,7 @@ const Registration = ({postNewUser}) => {
     };
 
     if (isRegister) {
-        return <Navigate to="/"/>
+        return <Navigate to="/users"/>
     }
 
     return (
@@ -72,22 +64,10 @@ const Registration = ({postNewUser}) => {
                     <Input onChange={handleInput} required name="password" type="password" className="input" placeholder="Password"/>
                     <Input onChange={isPasswordCorrect} required name="repeat-password" type="password" className="input" placeholder="Repeat password"/>
                    <span className='alert-password-active'>{message}</span>
-                    {/*<div className="input-wrapper">*/}
-                    {/*    <div className="quantity-wrapper">*/}
-                    {/*        <Input name="age" onChange={handleInput} required  min="16" max="99" type="number" className="input quantity" placeholder="Age"/>*/}
-                    {/*    </div>*/}
-                    {/*    <Select onChange={handleInput}/>*/}
-                    {/*</div>*/}
-
-                    {/*<div className='radio-container'>*/}
-                    {/*    <Input onChange={handleInput} required type="radio" id="male" name="gender" value="male"/>*/}
-                    {/*        <label htmlFor="male">Male</label><br/>*/}
-                    {/*    <Input onChange={handleInput} type="radio" id="female" name="gender" value="female"/>*/}
-                    {/*         <label htmlFor="female">Female</label><br/>*/}
-                    {/*</div>*/}
 
                     <SubmitButton/>
                 </form>
+                <Link className="link" to='/'>Sign in</Link>
             </div>
         </>
     );

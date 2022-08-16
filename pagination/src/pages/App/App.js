@@ -1,8 +1,7 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
+import { useDispatch} from "react-redux";
 
 import UsersList from "../UsersList/UsersList";
 import Header from "../Header/Header";
@@ -11,35 +10,28 @@ import About from "../About/About";
 import Faq from "../Faq/Faq";
 import NotFound from "../NotFound/NotFound";
 import Login from "../Login/Login"
-import Loader from "../Loader/Loader";
-
-import { getUsers } from "../../features/usersList/usersListSlice";
+import ProtectedRoute from "../../router/ProtectedRoute";
 import { registerNewUser } from "../../features/userRegistration/userRegistrationSlice"
 import { loginServer }  from "../../features/userLogin/userLoginSlice"
 
+import "./App.css";
 const App = () => {
-
-    const { isLoading } = useSelector((state) => state.users);
     const dispatch = useDispatch();
-
-
-    useEffect(() => {
-        setTimeout(() => {
-            dispatch(getUsers());
-        }, 3000);
-    }, []);
 
   return (
     <div className="App">
         <BrowserRouter >
             <Header/>
+
             <Routes>
 
-                <Route path="/" element={isLoading ? <Loader/> : <UsersList />}/>
+                <Route element={<ProtectedRoute/>}>
+                    <Route path="/users" element={ <UsersList />}/>
+                </Route>
                 <Route path="/registration" element={<Registration postNewUser={(data) => dispatch(registerNewUser(data))}/>}/>
                 <Route path="/about" element={<About />}/>
                 <Route path="/faq" element={<Faq />}/>
-                <Route path="/sign-in" element={<Login login={(data) => dispatch(loginServer(data))}/>}></Route>
+                <Route path="/" element={<Login login={(data) => dispatch(loginServer(data))}/>}></Route>
                 <Route path="*" element={<NotFound />}/>
 
             </Routes>
