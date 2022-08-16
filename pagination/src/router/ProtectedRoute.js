@@ -7,10 +7,11 @@ const ProtectedRoute = () => {
     const location = useLocation();
 
     return (
-        !!(isRegister || isLogin) ?
-                    <Outlet/>
-                :
-                    <Navigate to="/" state={{ from: location}} replace/>
+        !!(isRegister || isLogin)
+            ?
+            <Outlet/>
+            :
+            <Navigate to="/" state={{ from: location}} replace/>
     )
 }
 
