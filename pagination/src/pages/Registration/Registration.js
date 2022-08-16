@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import Input from "../../components/input/Input";
 //import Select from "../../components/select/Select";
 import SubmitButton from "../../components/submit-button/SubmitButton";
-import { useNavigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "./Registration.css";
 const Registration = ({postNewUser}) => {
     const { isRegister } = useSelector((state) => state.registration);
-
-    const navigate = useNavigate();
 
     const initialData = {
         first_name: '',
@@ -57,7 +55,7 @@ const Registration = ({postNewUser}) => {
     };
 
     if (isRegister) {
-        navigate("/")
+        return <Navigate to="/"/>
     }
 
     return (

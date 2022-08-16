@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     height: 100vh;
-
+    margin-top: -100px;
 }
 
 .adding-user-form {
@@ -16,7 +16,6 @@
     letter-spacing: .2em;
     font-weight: 600;
 }
-
 
 .radio-container {
     display: flex;
