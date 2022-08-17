@@ -60,8 +60,6 @@ const UsersList = () => {
             <h1>Users List</h1>
             <div className="container">
 
-                <table className="users-list">
-                    <tbody>
                 <InfiniteScroll
                     style={{marginLeft: "200px", width: "1000px"}}
                     dataLength={items.length} //This is important field to render the next data
@@ -73,7 +71,8 @@ const UsersList = () => {
                             <b>Yay! You have seen it all</b>
                         </p>
                     }
-                >
+                ><table className="users-list">
+                    <tbody>
                         {items.map((user) => {
                             return (
                                 <tr key={user.id} className="description">
@@ -85,9 +84,10 @@ const UsersList = () => {
                                 </tr>
                             )
                         })}
-                </InfiniteScroll>
                     </tbody>
                 </table>
+                </InfiniteScroll>
+
             </div>
         </>
     );
