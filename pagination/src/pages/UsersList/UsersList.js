@@ -1,74 +1,93 @@
 import React, {useEffect, useState} from 'react';
-import { useSelector, useDispatch } from "react-redux";
-
-import ReactPaginate from "react-paginate";
-import { getUsers } from "../../features/usersList/usersListSlice";
+// import { useSelector, useDispatch } from "react-redux";
+import InfiniteScroll from "react-infinite-scroll-component";
+// import { getUsers, nextPage } from "../../features/usersList/usersListSlice";
 import "./UsersList.css";
 import Loader from "../Loader/Loader";
 
 
 const UsersList = () => {
-    const dispatch = useDispatch();
-    const { isLoading } = useSelector((state) => state.users);
+    // const dispatch = useDispatch();
+    // const { isLoading } = useSelector((state) => state.users);
+    //
+    // const { users } = useSelector((state) => state.users);
+    const [hasMore, setHasMore] = useState(true)
+
+    const [items, setItems] = useState([])
+    const [page, setPage] = useState(2)
+
+
+    const baseUrl = 'https://core-area-api.herokuapp.com';
 
     useEffect(() => {
-        setTimeout(() => {
-            dispatch(getUsers());
-        }, 0);
-    }, []);
+        const getData = async () => {
+            const res = await fetch(`${baseUrl}/users?_page=${1}&_limit=20`, {
+                method: 'GET',
+                headers: {
+                    authorization: 'super-token',
+                    'Content-Type': 'application/json',
+                },
+            })
+            const data = await res.json();
+            setItems(data)
+        }
+        getData();
+        }
+    , []);
 
-    const { users } = useSelector((state) => state.users);
+    const fetchData = async () => {
+        const res = await fetch(`${baseUrl}/users?_page=${page}&_limit=20`, {
+            method: 'GET',
+            headers: {
+                authorization: 'super-token',
+                'Content-Type': 'application/json',
+            },
+        })
+        return await res.json();
+    }
+    const nextItems = async () => {
+        const newData = await fetchData();
+        setItems([...items, ...newData])
+        if (newData.length === 0 || newData.length < 20) {
+            setHasMore(false)
+        }
+        setPage(page + 1);
+    }
 
-    const [currentItems, setCurrentItems] = useState([]);
-    const [pageCount, setPageCount] = useState(0);
-    const [itemOffset, setItemOffset] = useState(0);
-    const itemsPerPage = 8;
+    return (
 
-    useEffect(() => {
-        const endOffset = itemOffset + itemsPerPage;
-        setCurrentItems(users.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(users.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage, users]);
-
-    const handlePageClick = event => {
-        const newOffset = (event.selected * itemsPerPage) % users.length;
-        setItemOffset(newOffset);
-    };
-
-
-    return (isLoading ? <Loader/> :
         <>
             <h1>Users List</h1>
             <div className="container">
+
                 <table className="users-list">
                     <tbody>
-                    {currentItems.map((user) => {
-                        return (
-                            <tr key={user.id} className="description">
-                                <th className="number title">&#9737;</th>
-                                <th className="name title">{user.first_name} {user.last_name}</th>
-                                <th className="age title">{user.age}</th>
-                                <th className="gender title">{user.gender}</th>
-                                <th className="address title">{user.address}</th>
-                            </tr>
+                <InfiniteScroll
+                    style={{marginLeft: "200px", width: "1000px"}}
+                    dataLength={items.length} //This is important field to render the next data
+                    next={nextItems}
+                    hasMore={hasMore}
+                    loader={<Loader/>}
+                    endMessage={
+                        <p style={{ textAlign: 'center' }}>
+                            <b>Yay! You have seen it all</b>
+                        </p>
+                    }
+                >
+                        {items.map((user) => {
+                            return (
+                                <tr key={user.id} className="description">
+                                    <th className="number title">&#9737;</th>
+                                    <th className="name title">{user.first_name} {user.last_name}</th>
+                                    <th className="age title">{user.age}</th>
+                                    <th className="gender title">{user.gender}</th>
+                                    <th className="address title">{user.address}</th>
+                                </tr>
                             )
-                    })}
+                        })}
+                </InfiniteScroll>
                     </tbody>
                 </table>
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="Next >"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount={pageCount}
-                    previousLabel="< Previous"
-                    renderOnZeroPageCount={null}
-                    containerClassName="paginate"
-                    pageLinkClassName="page-num"
-                    previousLinkClassName="page-num"
-                    nextLinkClassName="page-num"
-                    activeClassName="active"
-                />
             </div>
         </>
     );
