@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 // import { useSelector, useDispatch } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { getUsers, nextPage } from "../../features/usersList/usersListSlice";
-import "./UsersList.css";
+import "./UsersList.scss";
 import Loader from "../Loader/Loader";
 
 

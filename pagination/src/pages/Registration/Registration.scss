@@ -33,13 +33,14 @@
     font-size: 18px;
     text-decoration: none;
     letter-spacing: .1em;
+
+    &:hover {
+        letter-spacing: .2em;
+        transition: all .3s ease-out;
+    }
+
+    &:visited {
+        color: azure;
+    }
 }
 
-.link:hover {
-    letter-spacing: .2em;
-    transition: all .3s ease-out;
-}
-
-.link:visited {
-    color: azure;
-}

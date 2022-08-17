@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import Input from "../../components/input/Input";
 import SubmitButton from "../../components/submit-button/SubmitButton";
 
-import "./Registration.css";
+import "./Registration.scss";
 const Registration = ({postNewUser}) => {
     const { isRegister } = useSelector((state) => state.registration);
 
