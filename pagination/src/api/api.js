@@ -38,7 +38,8 @@ export const newUserRegistration = data => {
             ...data
         }),
     })
-        .then(() => true)
-        .catch(err => console.log(err))
+       .then(res => {
+           return res.ok;
+       })
 };
 

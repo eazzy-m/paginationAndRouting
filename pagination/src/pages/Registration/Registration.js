@@ -66,7 +66,7 @@ const Registration = ({postNewUser}) => {
                     <InputStyled  name="repeat-password" onChange={isPasswordCorrect} required type="password" className="input" placeholder="Repeat password"/>
                    <span className='alert-password-active'>{message}</span>
 
-                    <SubmitButton/>
+                    <SubmitButton />
                 </form>
                 <Link className="link" to='/'>Sign in</Link>
             </div>

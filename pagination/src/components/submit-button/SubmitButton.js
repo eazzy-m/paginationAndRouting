@@ -7,6 +7,10 @@ function SubmitButton() {
         <Button
             variant="contained"
             className="submit-button"
+            type="submit"
+            sx={{
+                margin: "20px auto 100px;"
+            }}
         >Submit</Button>
     )
 }
