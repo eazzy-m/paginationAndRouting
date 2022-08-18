@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from 'react';
-// import { useSelector, useDispatch } from "react-redux";
+import React, {useCallback, useEffect, useState} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
-// import { getUsers, nextPage } from "../../features/usersList/usersListSlice";
+
 import "./UsersList.scss";
 import Loader from "../Loader/Loader";
-
+import {Input} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 const UsersList = () => {
-    // const dispatch = useDispatch();
-    // const { isLoading } = useSelector((state) => state.users);
-    //
-    // const { users } = useSelector((state) => state.users);
-    const [hasMore, setHasMore] = useState(true)
 
-    const [items, setItems] = useState([])
-    const [page, setPage] = useState(2)
-
+    const [hasMore, setHasMore] = useState(true);
+    const [items, setItems] = useState([]);
+    const [page, setPage] = useState(2);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const baseUrl = 'https://core-area-api.herokuapp.com';
 
@@ -27,13 +23,12 @@ const UsersList = () => {
                     authorization: 'super-token',
                     'Content-Type': 'application/json',
                 },
-            })
+            });
             const data = await res.json();
-            setItems(data)
-        }
+            setItems(data);
+        };
         getData();
-        }
-    , []);
+        }, []);
 
     const fetchData = async () => {
         const res = await fetch(`${baseUrl}/users?_page=${page}&_limit=20`, {
@@ -42,24 +37,48 @@ const UsersList = () => {
                 authorization: 'super-token',
                 'Content-Type': 'application/json',
             },
-        })
+        });
         return await res.json();
-    }
+    };
+
+
     const nextItems = async () => {
         const newData = await fetchData();
-        setItems([...items, ...newData])
+        setItems([...items, ...newData]);
         if (newData.length === 0 || newData.length < 20) {
-            setHasMore(false)
+            setHasMore(false);
         }
         setPage(page + 1);
-    }
+    };
+
+    const debounce = (callBack, delay) => {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                callBack(...args);
+            }, delay);
+        };
+    };
+
+    const searchHandler = (evt) => {
+        let searchItem = evt.target.value;
+        searchItem.length > 2 ? setSearchTerm(searchItem) : setSearchTerm(searchItem)
+        };
+
+    const updatedSearchHandler = useCallback(debounce(searchHandler, 500), [searchTerm]);
 
     return (
-
         <>
             <h1>Users List</h1>
             <div className="container">
-
+                <div className="search-container">
+                    <label className="search-wrapper">
+                        Enter first name or last name:
+                        <Input onChange={updatedSearchHandler} className="search-input" placeholder="..."/>
+                        <SearchIcon className="search-image"/>
+                    </label>
+                </div>
                 <InfiniteScroll
                     style={{marginLeft: "200px", width: "1000px"}}
                     dataLength={items.length} //This is important field to render the next data
@@ -70,10 +89,20 @@ const UsersList = () => {
                         <p style={{ textAlign: 'center' }}>
                             <b>Yay! You have seen it all</b>
                         </p>
-                    }
-                ><table className="users-list">
+                    }>
+                    <table className="users-list">
                     <tbody>
-                        {items.map((user) => {
+                        {items.filter(value => {
+                            if (searchTerm === "") {
+                                return value
+                            } else if (
+                                value.first_name.toLowerCase().includes(searchTerm.trim().toLowerCase())
+                            ||
+                                value.last_name.toLowerCase().includes(searchTerm.trim().toLowerCase())
+                            ) {
+                                return value
+                            }
+                        }).map((user) => {
                             return (
                                 <tr key={user.id} className="description">
                                     <th className="number title">&#9737;</th>
