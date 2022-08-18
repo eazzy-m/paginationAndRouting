@@ -10,23 +10,21 @@
     letter-spacing: .2em;
     outline: none;
     border: none;
+
+    &::placeholder {
+        color: black;
+        font-weight: 600;
+    }
+    &:active {
+        background-color: #4DC3FA;
+    }
 }
 
-.input::placeholder {
-    color: black;
-    font-weight: 600;
+.Mui-focused {
+    background-color: #FFF842;
 }
 
-
-#male, #female {
-    accent-color: #FFF842;
-}
-
-label {
-    cursor: pointer;
-}
-
-.alert-password-active {
+.Mui-error, .alert-password-active {
     margin: 10px auto 0;
     display: block;
     color: red;

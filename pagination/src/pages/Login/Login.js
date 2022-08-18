@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {Link, Navigate} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {Input} from "@mui/material";
-//import Input from "../../components/input/Input";
-import SubmitButton from "../../components/submit-button/SubmitButton";
 
+import InputStyled from "../../components/input/InputStyled";
+import SubmitButton from "../../components/submit-button/SubmitButton";
 
 const Login = ({login}) => {
     const { isLogin } = useSelector(state => state.login);
@@ -36,26 +35,20 @@ const Login = ({login}) => {
 
             <div className="adding-user">
                 <form method="POST" id="login-form" className="adding-user-form" onSubmit={submit}>
-                    <Input name="login" onChange={handleInput} required type="text"
-                           sx={{
-                               backgroundColor: "#4DC3FA",
-                               fontWeight: 600,
-                               marginTop: "20px",
-                               height: "40px",
-                               borderRadius: "5px"
-                            }}
-                           placeholder="username or email"/>
-                    <Input onChange={handleInput} required name="password" type="password"
-                           sx={{
-                               backgroundColor: "#4DC3FA",
-                               fontWeight: 600,
-                               marginTop: "20px",
-                               height: "40px",
-                               borderRadius: "5px"
-                           }}
-                           placeholder="Password"/>
-
-                    <SubmitButton/>
+                    <InputStyled
+                        autoFocus={true}
+                        name="login"
+                        onChange={handleInput}
+                        required
+                        type="text"
+                        placeholder="Username or Email"/>
+                    <InputStyled
+                        onChange={handleInput}
+                        required
+                        name="password"
+                        type="password"
+                        placeholder="Password"/>
+                    <SubmitButton />
                 </form>
                 <Link className="link" to={'/registration'}>Sign up</Link>
             </div>
