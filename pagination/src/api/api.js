@@ -13,7 +13,7 @@ export const handlerLogin = data => {
             ...data
         }),
     })
-        .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+        .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 };
 
 export const getUsersFromServer = () => {
@@ -24,7 +24,7 @@ export const getUsersFromServer = () => {
             'Content-Type': 'application/json',
         },
     })
-        .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+        .then(res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`));
 };
 
 export const newUserRegistration = data => {
@@ -38,8 +38,6 @@ export const newUserRegistration = data => {
             ...data
         }),
     })
-       .then(res => {
-           return res.ok;
-       })
+       .then(res => res.ok);
 };
 

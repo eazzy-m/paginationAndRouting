@@ -61,10 +61,10 @@ const UsersList = () => {
         };
     };
 
-    const searchHandler = (evt) => {
+    const searchHandler = evt => {
         let searchItem = evt.target.value;
-        searchItem.length > 2 ? setSearchTerm(searchItem) : setSearchTerm(searchItem)
-        };
+        searchItem.length > 2 ? setSearchTerm(searchItem) : setSearchTerm(searchItem);
+    };
 
     const updatedSearchHandler = useCallback(debounce(searchHandler, 500), [searchTerm]);
 
@@ -81,7 +81,7 @@ const UsersList = () => {
                 </div>
                 <InfiniteScroll
                     style={{marginLeft: "200px", width: "1000px"}}
-                    dataLength={items.length} //This is important field to render the next data
+                    dataLength={items.length}
                     next={nextItems}
                     hasMore={hasMore}
                     loader={<Loader/>}
@@ -116,7 +116,6 @@ const UsersList = () => {
                     </tbody>
                 </table>
                 </InfiniteScroll>
-
             </div>
         </>
     );

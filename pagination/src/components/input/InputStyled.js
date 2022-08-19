@@ -1,7 +1,7 @@
 import React from 'react';
+import {Input} from "@mui/material";
 
 import './InputStyled.scss';
-import {Input} from "@mui/material";
 
 function InputStyled({name, type, onChange, required, placeholder, autoFocus=false}) {
 

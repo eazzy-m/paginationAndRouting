@@ -36,5 +36,5 @@ const userRegistrationSlice = createSlice({
 });
 
 
-export const { logOutRegister } = userRegistrationSlice.actions
+export const { logOutRegister } = userRegistrationSlice.actions;
 export default userRegistrationSlice.reducer;
