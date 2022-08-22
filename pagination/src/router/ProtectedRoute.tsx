@@ -2,7 +2,9 @@ import {useLocation, Navigate, Outlet} from "react-router";
 import { useSelector } from "react-redux";
 
 const ProtectedRoute = () => {
+    // @ts-ignore
     const { isRegister } = useSelector(state => state.registration);
+    // @ts-ignore
     const { isLogin } = useSelector(state => state.login);
     const location = useLocation();
 

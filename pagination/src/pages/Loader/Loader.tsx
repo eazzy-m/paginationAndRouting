@@ -1,10 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 
 import './Loader.scss';
+// @ts-ignore
 import gear from '../../assets/gear/gear-svgrepo-com.svg';
 
 
-function Loader() {
+const Loader: React.FC = () => {
     return (
         <div className="loading-container">
             <h2 className="loading-title">Is loading...</h2>
@@ -18,6 +19,6 @@ function Loader() {
             </div>
         </div>
     );
-}
+};
 
 export default Loader;

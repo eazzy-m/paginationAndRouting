@@ -1,22 +1,33 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./UsersList.scss";
 import Loader from "../Loader/Loader";
 import {Input} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import * as React from "react";
 
 const UsersList = () => {
 
+    interface user {
+        first_name: string,
+        last_name: string,
+        user_name: string,
+        id: string,
+        age: number,
+        address: string,
+        gender:string
+    }
+
     const [hasMore, setHasMore] = useState(true);
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<user[]>([]);
     const [page, setPage] = useState(2);
     const [searchTerm, setSearchTerm] = useState("");
 
     const baseUrl = 'https://core-area-api.herokuapp.com';
 
     useEffect(() => {
-        const getData = async () => {
+        const getData = async (): Promise<void> => {
             const res = await fetch(`${baseUrl}/users?_page=${1}&_limit=20`, {
                 method: 'GET',
                 headers: {
@@ -30,7 +41,7 @@ const UsersList = () => {
         getData();
         }, []);
 
-    const fetchData = async () => {
+    const fetchData = async (): Promise<any> => {
         const res = await fetch(`${baseUrl}/users?_page=${page}&_limit=20`, {
             method: 'GET',
             headers: {
@@ -42,7 +53,7 @@ const UsersList = () => {
     };
 
 
-    const nextItems = async () => {
+    const nextItems = async (): Promise<any> => {
         const newData = await fetchData();
         setItems([...items, ...newData]);
         if (newData.length === 0 || newData.length < 20) {
@@ -51,17 +62,18 @@ const UsersList = () => {
         setPage(page + 1);
     };
 
-    const debounce = (callBack, delay) => {
+    const debounce = (callBack: (e) => void, delay: number):() => void => {
         let timer;
         return (...args) => {
             clearTimeout(timer);
             timer = setTimeout(() => {
+                // @ts-ignore
                 callBack(...args);
             }, delay);
         };
     };
 
-    const searchHandler = evt => {
+    const searchHandler = (evt: any): void => {
         let searchItem = evt.target.value;
         searchItem.length > 2 ? setSearchTerm(searchItem) : setSearchTerm(searchItem);
     };

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut }  from "../../features/userLogin/userLoginSlice";
@@ -6,12 +6,13 @@ import { logOutRegister } from "../../features/userRegistration/userRegistration
 import "./Header.scss";
 
 const Header = () => {
-
+    // @ts-ignore
     const { isRegister } = useSelector(state => state.registration);
+    // @ts-ignore
     const { isLogin } = useSelector(state => state.login);
     const dispatch = useDispatch();
 
-    const isLinkActive = (isActive) => isActive ? 'nav-item nav-item-active' : 'nav-item';
+    const isLinkActive = (isActive:boolean):string => isActive ? 'nav-item nav-item-active' : 'nav-item';
 
     return (
         <header className="header">
