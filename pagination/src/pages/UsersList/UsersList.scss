@@ -1,0 +1,55 @@
+
+.users-list {
+   width: 100%;
+}
+
+.user-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.description {
+    position: relative;
+}
+
+.name {
+    width: 200px;
+}
+
+.title {
+    padding-right: 25px;
+}
+
+.search-container {
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 30px;
+}
+
+.search-wrapper {
+
+}
+
+.search-input {
+    background-color: #4DC3FA;
+    width: 250px;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.search-image {
+    position: relative;
+    top: 7px;
+    right: 30px;
+}

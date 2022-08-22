@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut }  from "../../features/userLogin/userLoginSlice";
 import { logOutRegister } from "../../features/userRegistration/userRegistrationSlice";
-import "./Header.css";
+import "./Header.scss";
 
 const Header = () => {
 

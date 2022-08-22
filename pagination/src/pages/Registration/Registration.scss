@@ -19,12 +19,10 @@
     font-weight: 600;
 }
 
-.radio-container {
-    display: flex;
-    margin: 20px 0 25px 120px;
-    width: 180px;
-    justify-content: space-between;
+#login-form {
+    margin-top: -250px;
 }
+
 
 
 .link {
@@ -33,13 +31,14 @@
     font-size: 18px;
     text-decoration: none;
     letter-spacing: .1em;
+
+    &:hover {
+        letter-spacing: .2em;
+        transition: all .3s ease-out;
+    }
+
+    &:visited {
+        color: azure;
+    }
 }
 
-.link:hover {
-    letter-spacing: .2em;
-    transition: all .3s ease-out;
-}
-
-.link:visited {
-    color: azure;
-}

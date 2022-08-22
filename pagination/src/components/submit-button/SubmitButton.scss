@@ -1,0 +1,21 @@
+
+.submit-button {
+    align-self: center;
+    width: 160px;
+    cursor: pointer;
+    //margin: 20px auto 100px;
+    font-size: 16px;
+    letter-spacing: .2em;
+    font-weight: 600;
+    height: 40px;
+    padding: 10px 12px;
+    border-radius: 10px;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: transform .2s ease-in-out;
+    }
+    &:active {
+        transform: scale(.95);
+    }
+}

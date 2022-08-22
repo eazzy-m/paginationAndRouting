@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {Link, Navigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import Input from "../../components/input/Input";
+import InputStyled from "../../components/input/InputStyled";
 import SubmitButton from "../../components/submit-button/SubmitButton";
 
-import "./Registration.css";
+import "./Registration.scss";
 const Registration = ({postNewUser}) => {
     const { isRegister } = useSelector((state) => state.registration);
 
@@ -57,15 +57,16 @@ const Registration = ({postNewUser}) => {
             <div className="adding-user">
                 <form method="POST" id="form" className="adding-user-form" onSubmit={submit}>
 
-                    <Input name="first_name" onChange={handleInput} required type="text" className="input" placeholder="First Name"/>
-                    <Input name="last_name" onChange={handleInput} required type="text" className="input" placeholder="Last Name"/>
-                    <Input name="user_name" onChange={handleInput} required type="text" className="input" placeholder="User Name"/>
-                    <Input onChange={handleInput} required name="email" type="email" className="input" placeholder="Email"/>
-                    <Input onChange={handleInput} required name="password" type="password" className="input" placeholder="Password"/>
-                    <Input onChange={isPasswordCorrect} required name="repeat-password" type="password" className="input" placeholder="Repeat password"/>
+                    <InputStyled  name="first_name" onChange={handleInput} required type="text" className="input" placeholder="First Name"
+                                  autoFocus={true}/>
+                    <InputStyled  name="last_name" onChange={handleInput} required type="text" className="input" placeholder="Last Name"/>
+                    <InputStyled  name="user_name" onChange={handleInput} required type="text" className="input" placeholder="User Name"/>
+                    <InputStyled  name="email" onChange={handleInput} required type="email" className="input" placeholder="Email"/>
+                    <InputStyled  name="password" onChange={handleInput} required type="password" className="input" placeholder="Password"/>
+                    <InputStyled  name="repeat-password" onChange={isPasswordCorrect} required type="password" className="input" placeholder="Repeat password"/>
                    <span className='alert-password-active'>{message}</span>
 
-                    <SubmitButton/>
+                    <SubmitButton />
                 </form>
                 <Link className="link" to='/'>Sign in</Link>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Loader.css';
+import './Loader.scss';
 import gear from '../../assets/gear/gear-svgrepo-com.svg';
 
 

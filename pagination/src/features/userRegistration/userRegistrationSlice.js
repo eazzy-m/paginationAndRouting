@@ -4,7 +4,7 @@ import {newUserRegistration} from "../../api/api";
 
 const initialState = {
     isLoading: true,
-    isRegister: ''
+    isRegister: false
 };
 
 export const registerNewUser = createAsyncThunk('usersList/registerNewUser', newUserRegistration);
@@ -14,7 +14,7 @@ const userRegistrationSlice = createSlice({
     initialState,
     reducers: {
         logOutRegister: (state) => {
-            state.isRegister = '';
+            state.isRegister = false;
         }
     },
     extraReducers: {
@@ -23,10 +23,12 @@ const userRegistrationSlice = createSlice({
             state.isRegister = false;
         },
         [registerNewUser.fulfilled]: (state, action) => {
+            console.log('everything is fine')
             state.isLoading = false;
             state.isRegister = action.payload;
         },
         [registerNewUser.rejected]: (state) => {
+            console.log('reject')
             state.isRegister = false;
             state.isLoading = false;
         }
@@ -34,5 +36,5 @@ const userRegistrationSlice = createSlice({
 });
 
 
-export const { logOutRegister } = userRegistrationSlice.actions
+export const { logOutRegister } = userRegistrationSlice.actions;
 export default userRegistrationSlice.reducer;

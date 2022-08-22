@@ -14,7 +14,7 @@ import ProtectedRoute from "../../router/ProtectedRoute";
 import { registerNewUser } from "../../features/userRegistration/userRegistrationSlice"
 import { loginServer }  from "../../features/userLogin/userLoginSlice"
 
-import "./App.css";
+import "./App.scss";
 const App = () => {
     const dispatch = useDispatch();
 

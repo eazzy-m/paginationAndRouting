@@ -1,11 +1,19 @@
 import React from 'react';
+import Button from '@mui/material/Button';
 
-import './SubmitButton.css';
+import './SubmitButton.scss';
 
 function SubmitButton() {
     return (
-        <button type="submit" className="submit-button">Submit</button>
-    );
+        <Button
+            variant="contained"
+            className="submit-button"
+            type="submit"
+            sx={{
+                margin: "20px auto 100px;"
+            }}
+        >Submit</Button>
+    )
 }
 
 export default SubmitButton;
