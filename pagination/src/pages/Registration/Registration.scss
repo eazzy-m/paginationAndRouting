@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-top: -100px;
+    margin-top: -180px;
 }
 
 .adding-user-form {
@@ -22,23 +22,26 @@
 #login-form {
     margin-top: -250px;
 }
-
-
-
-.link {
-    margin-top: -40px;
-    color: aliceblue;
-    font-size: 18px;
-    text-decoration: none;
-    letter-spacing: .1em;
-
-    &:hover {
-        letter-spacing: .2em;
-        transition: all .3s ease-out;
-    }
-
-    &:visited {
-        color: azure;
-    }
+.standard-button {
+    width: 100px;
+    margin: 20px auto;
 }
+
+
+//.link {
+//    margin-top: -40px;
+//    color: aliceblue;
+//    font-size: 18px;
+//    text-decoration: none;
+//    letter-spacing: .1em;
+//
+//    &:hover {
+//        letter-spacing: .2em;
+//        transition: all .3s ease-out;
+//    }
+//
+//    &:visited {
+//        color: azure;
+//    }
+//}
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import "./NotFound.scss";
+//import "./NotFound.scss";
 // @ts-ignore
 import lens from "../../assets/microskope/microscope-lens-svgrepo-com.svg"
 
