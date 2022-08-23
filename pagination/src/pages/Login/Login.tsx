@@ -7,7 +7,7 @@ import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import * as React from "react";
 
 const Login = ({login} : {login: (data : {login: string,password: string}) => void}) => {
-    // @ts-ignore
+    //@ts-ignore
     const { isLogin } = useSelector(state => state.login);
     const initialData = {
         login: '',
@@ -22,7 +22,7 @@ const Login = ({login} : {login: (data : {login: string,password: string}) => vo
         login(data);
     };
 
-    const handleInput = (e):void => {
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = e.target;
         setData({...data, [name]: value});
     };

@@ -36,17 +36,13 @@ const Registration = ({postNewUser}: {postNewUser : (data : {first_name: string,
         }
     };
 
-    const isPasswordCorrect = (e) => {
+    const isPasswordCorrect = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setPassword(e.target.value);
     };
 
-    const handleInput = (e): void => {
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
-        if (name === 'age') {
-            setData({...data, [name]: value * 1});
-        } else {
-            setData({...data, [name]: value});
-        }
+        setData({...data, [name]: value});
     };
 
     if (isRegister) {
