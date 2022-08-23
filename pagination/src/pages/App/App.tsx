@@ -15,6 +15,7 @@ import { registerNewUser } from "../../features/userRegistration/userRegistratio
 import { loginServer }  from "../../features/userLogin/userLoginSlice";
 
 import "./App.scss";
+import {user} from "../../constants/interfaces";
 //import {AsyncThunkAction} from "@reduxjs/toolkit";
 const App: React.FC = () => {
     const dispatch = useDispatch();
