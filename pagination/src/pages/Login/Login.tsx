@@ -6,15 +6,15 @@ import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import * as React from "react";
 
-const Login = ({login}) => {
-    // @ts-ignore
+const Login = ({login} : {login: (data : {login: string,password: string}) => void}) => {
+    //@ts-ignore
     const { isLogin } = useSelector(state => state.login);
     const initialData = {
         login: '',
         password: ''
     };
 
-    const [data, setData] = useState<object>(initialData);
+    const [data, setData] = useState<{login: string, password: string}>(initialData);
 
     const submit = (e: React.FormEvent):void => {
         e.preventDefault();
@@ -22,7 +22,7 @@ const Login = ({login}) => {
         login(data);
     };
 
-    const handleInput = (e):void => {
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = e.target;
         setData({...data, [name]: value});
     };
