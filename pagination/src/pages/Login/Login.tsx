@@ -6,7 +6,7 @@ import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import * as React from "react";
 
-const Login = ({login}) => {
+const Login = ({login} : {login: (data : {login: string,password: string}) => void}) => {
     // @ts-ignore
     const { isLogin } = useSelector(state => state.login);
     const initialData = {
@@ -14,7 +14,7 @@ const Login = ({login}) => {
         password: ''
     };
 
-    const [data, setData] = useState<object>(initialData);
+    const [data, setData] = useState<{login: string, password: string}>(initialData);
 
     const submit = (e: React.FormEvent):void => {
         e.preventDefault();

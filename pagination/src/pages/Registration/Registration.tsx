@@ -7,7 +7,8 @@ import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import "./Registration.scss";
 
 
-const Registration = ({postNewUser}) => {
+const Registration = ({postNewUser}: {postNewUser : (data : {first_name: string, last_name: string,user_name: string,
+        email: string, password: string}) => void}) => {
     // @ts-ignore
     const { isRegister } = useSelector((state) => state.registration);
 
@@ -19,7 +20,8 @@ const Registration = ({postNewUser}) => {
         password: '',
     };
 
-    const [data, setData] = React.useState(initialData);
+    const [data, setData] = React.useState<{first_name: string, last_name: string, user_name: string,
+                                            email: string, password: string}>(initialData);
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
 
