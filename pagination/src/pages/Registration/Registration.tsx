@@ -1,14 +1,13 @@
-import * as React from 'react';
+import {useState, ChangeEvent, FormEvent} from 'react';
 import {Link, Navigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import "./Registration.scss";
+import {user} from "../../constants/interfaces"
 
-
-const Registration = ({postNewUser}: {postNewUser : (data : {first_name: string, last_name: string,user_name: string,
-        email: string, password: string}) => void}) => {
+const Registration = ({postNewUser}: {postNewUser : (data: user) => void}) => {
     // @ts-ignore
     const { isRegister } = useSelector((state) => state.registration);
 
@@ -20,12 +19,11 @@ const Registration = ({postNewUser}: {postNewUser : (data : {first_name: string,
         password: '',
     };
 
-    const [data, setData] = React.useState<{first_name: string, last_name: string, user_name: string,
-                                            email: string, password: string}>(initialData);
-    const [password, setPassword] = React.useState('');
-    const [message, setMessage] = React.useState('');
+    const [data, setData] = useState<user>(initialData);
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
 
-    const submit = (e: React.FormEvent):void => {
+    const submit = (e: FormEvent): void => {
         e.preventDefault();
         if (password === data.password) {
             setData(initialData);
@@ -36,11 +34,11 @@ const Registration = ({postNewUser}: {postNewUser : (data : {first_name: string,
         }
     };
 
-    const isPasswordCorrect = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const isPasswordCorrect = (e: ChangeEvent<HTMLInputElement>): void => {
         setPassword(e.target.value);
     };
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target;
         setData({...data, [name]: value});
     };

@@ -1,10 +1,9 @@
-import {useState} from 'react';
+import {useState, ChangeEvent, FormEvent} from 'react';
 import {Link, Navigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
-import * as React from "react";
 
 const Login = ({login} : {login: (data : {login: string,password: string}) => void}) => {
     //@ts-ignore
@@ -16,13 +15,13 @@ const Login = ({login} : {login: (data : {login: string,password: string}) => vo
 
     const [data, setData] = useState<{login: string, password: string}>(initialData);
 
-    const submit = (e: React.FormEvent):void => {
+    const submit = (e: FormEvent):void => {
         e.preventDefault();
         setData(initialData);
         login(data);
     };
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>):void => {
+    const handleInput = (e: ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = e.target;
         setData({...data, [name]: value});
     };
