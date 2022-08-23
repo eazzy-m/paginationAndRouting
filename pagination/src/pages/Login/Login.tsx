@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
+import * as React from "react";
 
 const Login = ({login}) => {
     // @ts-ignore
@@ -15,7 +16,7 @@ const Login = ({login}) => {
 
     const [data, setData] = useState<object>(initialData);
 
-    const submit = (e):void => {
+    const submit = (e: React.FormEvent):void => {
         e.preventDefault();
         setData(initialData);
         login(data);

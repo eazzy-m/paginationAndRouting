@@ -19,7 +19,7 @@ const TsInput: React.FC<tsInputProps> = ({name,
                                              required,
                                              onChange}) => {
     return (
-        <Input name={name}
+        <input name={name}
                autoFocus={autoFocus}
                required={required}
                onChange={onChange}

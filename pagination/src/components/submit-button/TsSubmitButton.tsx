@@ -5,13 +5,14 @@ import './SubmitButton.scss';
 
 const TsSubmitButton: React.FC = () => {
     return (
-        <Button variant="contained"
-                className="submit-button"
-                type="submit"
-                sx={{
-                    margin: "20px auto 100px;"
-                }}
-        >Submit</Button>
+        // <Button variant="contained"
+        //         className="submit-button"
+        //         type="submit"
+        //         sx={{
+        //             margin: "20px auto 100px;"
+        //         }}
+        // >Submit</Button>
+        <button className="btn standard-button">Submit</button>
     )
 };
 

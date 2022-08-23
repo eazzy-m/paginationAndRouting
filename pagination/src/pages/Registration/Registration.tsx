@@ -23,7 +23,7 @@ const Registration = ({postNewUser}) => {
     const [password, setPassword] = React.useState('');
     const [message, setMessage] = React.useState('');
 
-    const submit = (e):void => {
+    const submit = (e: React.FormEvent):void => {
         e.preventDefault();
         if (password === data.password) {
             setData(initialData);
@@ -34,11 +34,11 @@ const Registration = ({postNewUser}) => {
         }
     };
 
-    const isPasswordCorrect = (e):void => {
+    const isPasswordCorrect = (e) => {
         setPassword(e.target.value);
     };
 
-    const handleInput = (e):void => {
+    const handleInput = (e): void => {
         const { name, value } = e.target;
         if (name === 'age') {
             setData({...data, [name]: value * 1});

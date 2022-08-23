@@ -87,7 +87,7 @@ const UsersList = () => {
                 <div className="search-container">
                     <label className="search-wrapper">
                         Enter first name or last name:
-                        <Input onChange={updatedSearchHandler} className="search-input" placeholder="..."/>
+                        <input onChange={updatedSearchHandler} className="search-input" placeholder="..."/>
                         <SearchIcon className="search-image"/>
                     </label>
                 </div>
