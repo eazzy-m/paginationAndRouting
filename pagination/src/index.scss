@@ -18,18 +18,18 @@ Author: https://github.com/pablorgarcia
 
 
 body {
-   font-family: 'Open Sans', sans-serif;
-   font-weight: 300;
-   line-height: 1.42em;
+  // font-family: 'Open Sans', sans-serif;
+  //font-weight: 300;
+  // line-height: 1.42em;
    //color:#A7A1AE;
    //background-color:#1F2739;
 }
 
 h1 {
    padding: 30px;
-   font-size:3em;
+   font-size: 3em;
    font-weight: 300;
-   line-height:1em;
+   line-height: 1em;
    text-align: center;
 //   color: #4DC3FA;
 }
@@ -38,9 +38,9 @@ h1 {
 .yellow { color: #FFF842; }
 
 .container th h1 {
-   font-weight: bold;
-   font-size: 1em;
-    text-align: left;
+   //font-weight: bold;
+   //font-size: 1em;
+   // text-align: left;
  //   color: #185875;
    // border: 1px solid yellow;
 }
@@ -70,7 +70,7 @@ h1 {
    display: table;
    padding: 0;
    height: calc(100vh - 60px);
-  border: 1px solid black;
+   border: 1px solid black;
 }
 table {
   border-collapse: collapse;

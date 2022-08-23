@@ -1,23 +1,14 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState, ChangeEvent, FC} from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./UsersList.scss";
 import Loader from "../Loader/Loader";
-import {Input} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import * as React from "react";
+import {user} from "../../constants/interfaces"
 
-const UsersList = () => {
+const UsersList: FC = () => {
 
-    interface user {
-        first_name: string,
-        last_name: string,
-        user_name: string,
-        id: string,
-        age: number,
-        address: string,
-        gender:string
-    }
+
 
     const [hasMore, setHasMore] = useState(true);
     const [items, setItems] = useState<user[]>([]);
@@ -41,7 +32,7 @@ const UsersList = () => {
         getData();
         }, []);
 
-    const fetchData = async (): Promise<any> => {
+    const fetchData = async (): Promise<user[]> => {
         const res = await fetch(`${baseUrl}/users?_page=${page}&_limit=20`, {
             method: 'GET',
             headers: {
@@ -62,18 +53,18 @@ const UsersList = () => {
         setPage(page + 1);
     };
 
-    const debounce = (callBack: (e) => void, delay: number):() => void => {
-        let timer;
+    const debounce = (callBack: (e: ChangeEvent<HTMLInputElement>) => void, delay: number):() => void => {
+        let timer: any;
         return (...args) => {
             clearTimeout(timer);
-            timer = setTimeout(() => {
+            timer = setTimeout(():void => {
                 // @ts-ignore
                 callBack(...args);
             }, delay);
         };
     };
 
-    const searchHandler = (evt: any): void => {
+    const searchHandler = (evt: ChangeEvent<HTMLInputElement>): void => {
         let searchItem = evt.target.value;
         searchItem.length > 2 ? setSearchTerm(searchItem) : setSearchTerm(searchItem);
     };
@@ -86,7 +77,7 @@ const UsersList = () => {
             <div className="container">
                 <div className="search-container">
                     <label className="search-wrapper">
-                        Enter first name or last name:
+                        Enter first or last name:
                         <input onChange={updatedSearchHandler} className="search-input" placeholder="..."/>
                         <SearchIcon className="search-image"/>
                     </label>
@@ -98,13 +89,13 @@ const UsersList = () => {
                     hasMore={hasMore}
                     loader={<Loader/>}
                     endMessage={
-                        <p style={{ textAlign: 'center' }}>
-                            <b>Yay! You have seen it all</b>
+                        <p style={{ textAlign: 'center', marginTop: "15px" }}>
+                            <b>These are all users whose first or last name includes "{searchTerm}"</b>
                         </p>
                     }>
                     <table className="users-list">
                     <tbody>
-                        {items.filter(value => {
+                        {items.filter((value: user) => {
                             if (searchTerm === "") {
                                 return value
                             } else if (
@@ -113,8 +104,8 @@ const UsersList = () => {
                                 value.last_name.toLowerCase().includes(searchTerm.trim().toLowerCase())
                             ) {
                                 return value
-                            }
-                        }).map((user) => {
+                            } return null
+                        }).map((user: user) => {
                             return (
                                 <tr key={user.id} className="description">
                                     <th className="number title">&#9737;</th>
