@@ -8,8 +8,6 @@ import {user} from "../../constants/interfaces"
 
 const UsersList: FC = () => {
 
-
-
     const [hasMore, setHasMore] = useState(true);
     const [items, setItems] = useState<user[]>([]);
     const [page, setPage] = useState(2);
@@ -18,7 +16,7 @@ const UsersList: FC = () => {
     const baseUrl = 'https://core-area-api.herokuapp.com';
 
     useEffect(() => {
-        const getData = async (): Promise<void> => {
+        (async function getData(): Promise<void> {
             const res = await fetch(`${baseUrl}/users?_page=${1}&_limit=20`, {
                 method: 'GET',
                 headers: {
@@ -28,8 +26,7 @@ const UsersList: FC = () => {
             });
             const data = await res.json();
             setItems(data);
-        };
-        getData();
+        })();
         }, []);
 
     const fetchData = async (): Promise<user[]> => {
@@ -44,7 +41,7 @@ const UsersList: FC = () => {
     };
 
 
-    const nextItems = async (): Promise<any> => {
+    const nextItems = async (): Promise<void> => {
         const newData = await fetchData();
         setItems([...items, ...newData]);
         if (newData.length === 0 || newData.length < 20) {
@@ -122,6 +119,6 @@ const UsersList: FC = () => {
             </div>
         </>
     );
-}
+};
 
 export default UsersList;
