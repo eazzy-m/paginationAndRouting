@@ -7,3 +7,13 @@
 .page {
   height: calc(100vh - 60px);
 }
+
+.custom-window {
+  width: 900px;
+  margin: 0 auto;
+
+  .custom-window-pane {
+    min-height: 300px;
+  }
+}
+

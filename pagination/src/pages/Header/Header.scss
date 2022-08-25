@@ -5,6 +5,7 @@
   align-items: center;
   //background-color: #FFF842;
   justify-content: space-between;
+  font-family: Chicago_12, sans-serif;
 }
 
 .nav-list {
@@ -12,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
+  gap: 1px;
 }
 
 .nav-item {
@@ -22,9 +24,11 @@
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  border-bottom: 1px solid white;
+
   &:hover {
-    border-bottom: 1px solid black;
+
+    background-color: black;
+    color: white;
     //box-shadow: rgba(0, 0, 0, 0.17) 0 -23px 25px 0 inset, rgba(0, 0, 0, 0.15) 0 -36px 30px 0 inset, rgba(0, 0, 0, 0.1) 0 -79px 40px 0 inset, rgba(0, 0, 0, 0.06) 0 2px 1px, rgba(0, 0, 0, 0.09) 0 4px 2px, rgba(0, 0, 0, 0.09) 0 8px 4px, rgba(0, 0, 0, 0.09) 0 16px 8px;
     //border-radius: 5px;
     //background-color: #a7a122;
@@ -32,13 +36,18 @@
   }
 
   &:active {
+
+    background-color: black;
+    color: white;
     //border-bottom: 1px solid black;
     //color: #0E1119;
     //box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;
   }
 
   #{&}-active {
-    border-bottom: 1px solid black;
+
+    background-color: black;
+    color: white;
     //background-color: #a7a122;
     //border-radius: 5px;
     //box-shadow: rgba(50, 50, 93, 0.25) 0 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0 18px 36px -18px inset;

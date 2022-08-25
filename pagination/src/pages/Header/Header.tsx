@@ -24,7 +24,7 @@ const Header = () => {
                             <li className="nav-item"><NavLink
                                 className={({ isActive }) => isLinkActive(isActive)}
                                 to="/users">Users list</NavLink></li>
-                            <li className="nav-item"><NavLink
+                            <li  className="nav-item"><NavLink
                                 className={({ isActive }) => isLinkActive(isActive)}
                                 to="/about" >About</NavLink></li>
                             <li className="nav-item"><NavLink
@@ -44,7 +44,7 @@ const Header = () => {
                 </ul>
             </nav>
             <nav className="nav auth">
-                <ul className="nav-list">
+                <ul  className="nav-list">
                     {!!(isRegister || isLogin)
                         ?
                         <li className="nav-item">
@@ -59,7 +59,7 @@ const Header = () => {
                         </li>
                         :
                         <>
-                            <li className="nav-item">
+                            <li  className="nav-item">
                                 <NavLink
                                     className={({ isActive }) => isLinkActive(isActive)}
                                     to="/registration">Registration
