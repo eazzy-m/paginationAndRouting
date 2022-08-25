@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import "./Registration.scss";
-import {user} from "../../constants/interfaces"
+import {IUser} from "../../constants/interfaces"
 
-const Registration = ({postNewUser}: {postNewUser : (data: user) => void}) => {
+const Registration = ({postNewUser}: {postNewUser : (data: IUser) => void}) => {
     // @ts-ignore
     const { isRegister } = useSelector((state) => state.registration);
 
-    const initialData = {
+    const initialData: IUser = {
         first_name: '',
         last_name: '',
         user_name: '',
@@ -19,7 +19,7 @@ const Registration = ({postNewUser}: {postNewUser : (data: user) => void}) => {
         password: '',
     };
 
-    const [data, setData] = useState<user>(initialData);
+    const [data, setData] = useState<IUser>(initialData);
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 

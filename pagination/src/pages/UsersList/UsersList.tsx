@@ -4,12 +4,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "./UsersList.scss";
 import Loader from "../Loader/Loader";
 import SearchIcon from '@mui/icons-material/Search';
-import {user} from "../../constants/interfaces"
+import {IUser} from "../../constants/interfaces"
 
 const UsersList: FC = () => {
     const initialPage = 1;
     const [hasMore, setHasMore] = useState(true);
-    const [items, setItems] = useState<user[]>([]);
+    const [items, setItems] = useState<IUser[]>([]);
     const [page, setPage] = useState(2);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -22,7 +22,7 @@ const UsersList: FC = () => {
         })();
         }, []);
 
-    const fetchData = async (pageNumber): Promise<user[]> => {
+    const fetchData = async (pageNumber): Promise<IUser[]> => {
         const res = await fetch(`${baseUrl}/users?_page=${pageNumber}&_limit=20`, {
             method: 'GET',
             headers: {
@@ -64,6 +64,7 @@ const UsersList: FC = () => {
     return (
         <>
             <h1>Users List</h1>
+
             <div className="container">
                 <div className="search-container">
                     <label className="search-wrapper">
@@ -85,7 +86,7 @@ const UsersList: FC = () => {
                     }>
                     <table className="users-list">
                     <tbody>
-                        {items.filter((value: user) => {
+                        {items.filter((value: IUser) => {
                             if (searchTerm === "") {
                                 return value
                             } else if (
@@ -95,7 +96,7 @@ const UsersList: FC = () => {
                             ) {
                                 return value
                             } return null
-                        }).map((user: user) => {
+                        }).map((user: IUser) => {
                             return (
                                 <tr key={user.id} className="description">
                                     <th className="number title">&#9737;</th>
