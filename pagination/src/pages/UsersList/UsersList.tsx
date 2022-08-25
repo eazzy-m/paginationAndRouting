@@ -7,9 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {user} from "../../constants/interfaces"
 
 const UsersList: FC = () => {
-
-
-
+    const initialPage = 1;
     const [hasMore, setHasMore] = useState(true);
     const [items, setItems] = useState<user[]>([]);
     const [page, setPage] = useState(2);
@@ -18,22 +16,14 @@ const UsersList: FC = () => {
     const baseUrl = 'https://core-area-api.herokuapp.com';
 
     useEffect(() => {
-        const getData = async (): Promise<void> => {
-            const res = await fetch(`${baseUrl}/users?_page=${1}&_limit=20`, {
-                method: 'GET',
-                headers: {
-                    authorization: 'super-token',
-                    'Content-Type': 'application/json',
-                },
-            });
-            const data = await res.json();
-            setItems(data);
-        };
-        getData();
+        (async function getInitialData(): Promise<void> {
+            const newData = await fetchData(initialPage);
+            setItems([...items, ...newData]);
+        })();
         }, []);
 
-    const fetchData = async (): Promise<user[]> => {
-        const res = await fetch(`${baseUrl}/users?_page=${page}&_limit=20`, {
+    const fetchData = async (pageNumber): Promise<user[]> => {
+        const res = await fetch(`${baseUrl}/users?_page=${pageNumber}&_limit=20`, {
             method: 'GET',
             headers: {
                 authorization: 'super-token',
@@ -44,8 +34,8 @@ const UsersList: FC = () => {
     };
 
 
-    const nextItems = async (): Promise<any> => {
-        const newData = await fetchData();
+    const nextItems = async (): Promise<void> => {
+        const newData = await fetchData(page);
         setItems([...items, ...newData]);
         if (newData.length === 0 || newData.length < 20) {
             setHasMore(false);
@@ -122,6 +112,6 @@ const UsersList: FC = () => {
             </div>
         </>
     );
-}
+};
 
 export default UsersList;
