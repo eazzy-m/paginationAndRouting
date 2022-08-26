@@ -10,3 +10,17 @@ export interface IUser {
     gender?: string
 }
 
+export interface IGlobalState {
+    login: {
+        isLoading: boolean,
+        isLogin: string
+    },
+    registration: {
+        isLoading: boolean,
+        isRegister: boolean
+    },
+    users: {
+        isLoading: boolean
+        users: []
+    }
+}

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut }  from "../../features/userLogin/userLoginSlice";
-import { logOutRegister } from "../../features/userRegistration/userRegistrationSlice";
+import { logOut }  from "../../redux/features/userLogin/userLoginSlice";
+import { logOutRegister } from "../../redux/features/userRegistration/userRegistrationSlice";
 import "./Header.scss";
+import HeaderLink from "../../components/header-link/HeaderLink";
 
 const Header = () => {
     // @ts-ignore
@@ -12,7 +12,10 @@ const Header = () => {
     const { isLogin } = useSelector(state => state.login);
     const dispatch = useDispatch();
 
-    const isLinkActive = (isActive:boolean):string => isActive ? 'nav-item nav-item-active' : 'nav-item';
+    const exit = () => {
+        dispatch(logOut());
+        dispatch(logOutRegister());
+    }
 
     return (
         <header className="header">
@@ -21,61 +24,27 @@ const Header = () => {
                     {!!(isRegister || isLogin)
                         ?
                         <>
-                            <li className="nav-item"><NavLink
-                                className={({ isActive }) => isLinkActive(isActive)}
-                                to="/users">Users list</NavLink></li>
-                            <li  className="nav-item"><NavLink
-                                className={({ isActive }) => isLinkActive(isActive)}
-                                to="/about" >About</NavLink></li>
-                            <li className="nav-item"><NavLink
-                                className={({ isActive }) => isLinkActive(isActive)}
-                                to="/faq" >FAQ</NavLink></li>
+                            <HeaderLink to={"/users"} children={"Users list"}/>
+                            <HeaderLink to={"/about"} children={"About"}/>
+                            <HeaderLink to={"/faq"} children={"FAQ"}/>
                         </>
                         :
                         <>
-                        <li className="nav-item"><NavLink
-                        className={({ isActive }) => isLinkActive(isActive)}
-                        to="/about" >About</NavLink></li>
-                        <li className="nav-item"><NavLink
-                        className={({ isActive }) => isLinkActive(isActive)}
-                        to="/faq" >FAQ</NavLink></li>
+                            <HeaderLink to={"/about"} children={"About"}/>
+                            <HeaderLink to={"/faq"} children={"FAQ"}/>
                         </>
                         }
                 </ul>
             </nav>
             <nav className="nav auth">
-                <ul  className="nav-list">
+                <ul className="nav-list">
                     {!!(isRegister || isLogin)
                         ?
-                        <li className="nav-item">
-                            <NavLink
-                                onClick={() => {
-                                    dispatch(logOut());
-                                    dispatch(logOutRegister());
-                                }}
-                                className="nav-item"
-                                to="/about">LogOut
-                            </NavLink>
-                        </li>
+                            <HeaderLink to={"/about"} children={"LogOut"} onClick={exit}/>
                         :
                         <>
-                            <li  className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => isLinkActive(isActive)}
-                                    to="/registration">Registration
-                                </NavLink>
-                            </li>
-
-                            <li className="nav-item">
-                                <NavLink
-                                    className={({ isActive }) => isLinkActive(isActive)}
-                                    onClick={() => {
-                                        dispatch(logOut());
-                                        dispatch(logOutRegister());
-                                    }}
-                                    to="/">Logged in?
-                                </NavLink>
-                            </li>
+                            <HeaderLink to={"/registration"} children={"Registration"}/>
+                            <HeaderLink to={"/"} children={"Logged in?"} onClick={exit}/>
                         </>
                     }
                 </ul>

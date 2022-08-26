@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
-import {getUsersFromServer} from "../../api/api";
+import {getUsersFromServer} from "../../../api/api";
 
 const initialState = {
     users: [],

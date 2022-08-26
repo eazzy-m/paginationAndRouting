@@ -1,8 +1,6 @@
 html {
   margin: 0;
   padding: 0;
-  //background-color:#C8C8C8;
-
   .main {
     display: flex;
     flex-direction: column;
@@ -10,49 +8,16 @@ html {
 }
 
 
-/*  
-Table Responsive
-===================
-Author: https://github.com/pablorgarcia
-*/
-
-
-body {
-  // font-family: 'Open Sans', sans-serif;
-  //font-weight: 300;
-  // line-height: 1.42em;
-   //color:#A7A1AE;
-   //background-color:#1F2739;
-}
-
 h1 {
    padding: 30px;
    font-size: 3em;
    font-weight: 300;
    line-height: 1em;
    text-align: center;
-//   color: #4DC3FA;
 }
 
 .blue { color: #185875; }
 .yellow { color: #FFF842; }
-
-.container th h1 {
-   //font-weight: bold;
-   //font-size: 1em;
-   // text-align: left;
- //   color: #185875;
-   // border: 1px solid yellow;
-}
-
-.container td {
- //  font-weight: normal;
- //  font-size: 1em;
- //-webkit-box-shadow: 0 2px 2px -2px #0E1119;
- //   -moz-box-shadow: 0 2px 2px -2px #0E1119;
- //        box-shadow: 0 2px 2px -2px #0E1119;
- //   border: 1px solid yellow;
-}
 
 .number, .age {
   width: 50px;
@@ -72,51 +37,16 @@ h1 {
    height: calc(100vh - 60px);
    border: 1px solid black;
 }
+
 table {
   border-collapse: collapse;
   border: 2px solid black;
-
 }
 
 .container td, .container th {
     text-align: center;
-    //border: 1px solid black;
     padding: 1%;
 }
 .container tr {
   border: 1px solid black;
 }
-
-.container tr:nth-child(odd) {
-   //background-color: #323C50;
-}
-
-.container tr:nth-child(even) {
-  // background-color: #2C3446;
-}
-
-.container th {
-  // background-color: #1F2739;
-}
-
-
-
-
-//.container tr:hover {
-// background-color: #FFF842;
-// color: #ffffff;
-// font-weight: bold;
-// transition-delay: 0s;
-//   transition-duration: 0.4s;
-//   transition-property: all;
-//
-//}
-//
-//.container tr:only-child:hover {
-//  color: #A7A1AE;
-//}
-//
-//@media (max-width: 800px) {
-//.container td:nth-child(4),
-//.container th:nth-child(4) { display: none; }
-//}

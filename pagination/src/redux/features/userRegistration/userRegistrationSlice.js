@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
-import {newUserRegistration} from "../../api/api";
+import {newUserRegistration} from "../../../api/api";
 
 const initialState = {
     isLoading: true,
