@@ -4,56 +4,16 @@
     height: calc(100vh - 60px);
     position: absolute;
     z-index: 10;
-    background-color: #1F2739;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     &-title {
-        position: absolute;
-        top: 0;
-    }
-
-    &-container {
-        width: 300px;
-        height: 300px;
-        animation: 2s infinite alternate slidein;
+        margin-bottom: 100px;
     }
 }
 
 
 
-.lens {
-    width: 100%;
-    height: 100%;
-}
-
-@keyframes slidein {
-    from {
-        margin-left: 0;
-        margin-right: 230px;
-        transform: rotate(45deg)
-    }
-    0% {
-        transform: rotate(45deg);
-        width: 250px;
-        height: 250px;
-    }
-
-    70% {
-        transform: rotate(180deg);
-    }
-
-    100% {
-        transform: rotate(90deg);
-        width: 300px;
-        height: 300px;
-    }
-    to {
-        margin-left: 230px;
-        margin-right: 0;
-        transform: rotate(90deg)
-    }
-}
 

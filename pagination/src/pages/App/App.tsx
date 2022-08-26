@@ -12,8 +12,8 @@ import NotFound from "../NotFound/NotFound";
 import Login from "../Login/Login";
 import ProtectedRoute from "../../router/ProtectedRoute";
 import Loader from "../Loader/Loader";
-import { registerNewUser } from "../../features/userRegistration/userRegistrationSlice";
-import { loginServer }  from "../../features/userLogin/userLoginSlice";
+import { registerNewUser } from "../../redux/features/userRegistration/userRegistrationSlice";
+import { loginServer }  from "../../redux/features/userLogin/userLoginSlice";
 
 const UsersList = lazy(() => import("../UsersList/UsersList")) ;
 

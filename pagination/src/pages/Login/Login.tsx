@@ -4,10 +4,13 @@ import {useSelector} from "react-redux";
 
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
+import {IGlobalState} from "../../constants/interfaces";
 
-const Login = ({login} : {login: (data : {login: string,password: string}) => void}) => {
-    //@ts-ignore
-    const { isLogin } = useSelector(state => state.login);
+
+const Login = ({login} : {login: (data : {login: string, password: string}) => void}) => {
+
+    const isLogin  = useSelector<IGlobalState>((state) =>  state.login.isLogin);
+
     const initialData = {
         login: '',
         password: ''
@@ -26,12 +29,9 @@ const Login = ({login} : {login: (data : {login: string,password: string}) => vo
         setData({...data, [name]: value});
     };
 
-    if (isLogin) {
-        return <Navigate to="/users"/>
-    }
-
     return (
         <>
+            {!!isLogin && <Navigate to="/users"/>}
             <h1>Login</h1>
 
             <div className="adding-user">

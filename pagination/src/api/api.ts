@@ -1,3 +1,5 @@
+import {IUser} from "../constants/interfaces";
+
 const baseUrl = 'https://core-area-api.herokuapp.com';
 
 
@@ -45,4 +47,15 @@ export const newUserRegistration = (data: {
     })
         .then(() => true)
         .catch(err => console.log(err))
+};
+
+export const fetchPartOfData = async (pageNumber): Promise<IUser[]> => {
+    const res = await fetch(`${baseUrl}/users?_page=${pageNumber}&_limit=30`, {
+        method: 'GET',
+        headers: {
+            authorization: 'super-token',
+            'Content-Type': 'application/json',
+        },
+    });
+    return await res.json();
 };

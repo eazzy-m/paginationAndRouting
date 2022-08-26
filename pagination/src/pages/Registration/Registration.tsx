@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import TsInput from "../../components/input/TsInput";
 import TsSubmitButton from "../../components/submit-button/TsSubmitButton";
 import "./Registration.scss";
-import {IUser} from "../../constants/interfaces"
+import {IGlobalState, IUser} from "../../constants/interfaces"
 
 const Registration = ({postNewUser}: {postNewUser : (data: IUser) => void}) => {
-    // @ts-ignore
-    const { isRegister } = useSelector((state) => state.registration);
+
+    const isRegister = useSelector<IGlobalState>((state) => state.registration.isRegister);
 
     const initialData: IUser = {
         first_name: '',
@@ -43,12 +43,10 @@ const Registration = ({postNewUser}: {postNewUser : (data: IUser) => void}) => {
         setData({...data, [name]: value});
     };
 
-    if (isRegister) {
-        return <Navigate to="/users"/>
-    }
-
     return (
         <>
+            {!!isRegister && <Navigate to="/users" />}
+
             <h1>Registration</h1>
 
             <div className="adding-user">
